@@ -12,9 +12,14 @@ final class AccountRules {
     }
 
     static void requireActive(String accountNumber, AccountState account) {
+        requireActive("Account", accountNumber, account);
+    }
+
+    /** @param label how the account is named in the message, for example "Source account" (transfer). */
+    static void requireActive(String label, String accountNumber, AccountState account) {
         if (!"ACTIVE".equals(account.status())) {
             throw new BusinessRuleException(BusinessRuleException.ACCOUNT_NOT_ACTIVE,
-                    "Account " + accountNumber + " is not active (status: " + account.status() + ").");
+                    label + " " + accountNumber + " is not active (status: " + account.status() + ").");
         }
     }
 

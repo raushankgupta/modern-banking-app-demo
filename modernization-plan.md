@@ -237,12 +237,12 @@ Goal: a Spring Boot REST API that reproduces all legacy banking rules in a testa
 ### B7 - Transfer API
 - **Todo:** `POST /transfers` with `fromAccount`, `toAccount`, `amount` and an optional `description`. It runs one DB transaction with a `TRF` reference shared by the `TRANSFER_DEBIT` and `TRANSFER_CREDIT` rows.
 - **Acceptance criteria:**
-  - [ ] A valid transfer moves funds, writes 2 transaction rows with the same reference, and the total across both accounts is unchanged.
-  - [ ] The same source and destination returns 400.
-  - [ ] A non-ACTIVE source or destination returns 409. Insufficient funds returns 409. An unknown account returns 404.
-  - [ ] A failure on the credit leg rolls back the debit and both transaction rows (the legacy `transferRollsBackEverythingOnFailure` scenario).
+  - [x] A valid transfer moves funds, writes 2 transaction rows with the same reference, and the total across both accounts is unchanged.
+  - [x] The same source and destination returns 400.
+  - [x] A non-ACTIVE source or destination returns 409. Insufficient funds returns 409. An unknown account returns 404.
+  - [x] A failure on the credit leg rolls back the debit and both transaction rows (the legacy `transferRollsBackEverythingOnFailure` scenario).
 - **Relevant context:** [`TransferFrame.java`](src/main/java/com/legacybank/TransferFrame.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #15). Endpoint: `POST /api/v1/transfers`.
 
 ### B8 - Transaction history API
 - **Todo:** `GET /accounts/{accountNumber}/transactions?type=` returns rows newest first, with an optional type filter.
