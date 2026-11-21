@@ -166,3 +166,25 @@ $sidenav-width: 16rem;
   max-width: 28rem;
   margin-block-start: $spacing-05;
 }
+
+// ---- Transaction history -----------------------------------------------------------
+.history-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: $spacing-04;
+  margin-block-end: $spacing-06;
+
+  .cds--text-input-wrapper {
+    min-width: 16rem;
+  }
+
+  .cds--select {
+    min-width: 12rem;
+  }
+
+  .cds--btn,
+  .cds--inline-loading {
+    margin-block-start: 1.5rem;
+  }
+}

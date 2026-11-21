@@ -65,3 +65,30 @@ export const accountFixture = {
   email: 'priya@example.com',
   phone: '555-0103',
 };
+
+export const historyFixture = [
+  {
+    transactionId: 90003,
+    transactionType: 'TRANSFER_DEBIT',
+    amount: 1200,
+    transactionDate: '2026-11-20T10:15:00',
+    referenceNumber: 'TRF0000000006',
+    description: 'Transfer to 1001000011 - Rent (by admin)',
+  },
+  {
+    transactionId: 90002,
+    transactionType: 'WITHDRAWAL',
+    amount: 750,
+    transactionDate: '2026-11-19T09:00:00',
+    referenceNumber: 'WDR0000000002',
+    description: 'ATM-style cash withdrawal',
+  },
+  {
+    transactionId: 90001,
+    transactionType: 'DEPOSIT',
+    amount: 5000,
+    transactionDate: '2026-11-18T08:30:00',
+    referenceNumber: 'DEP0000000001',
+    description: 'Cash deposit',
+  },
+];

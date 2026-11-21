@@ -11,22 +11,15 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-  Tag,
   Tile,
 } from '@carbon/react';
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getDashboardSummary, type DashboardSummary, type TransactionType } from '../api/dashboard';
+import { TypeTag } from '../components/TypeTag';
 import { useAuth } from '../auth/AuthContext';
 import { formatDateTime, formatMoney } from '../format';
 import { screens } from '../layout/navItems';
-
-const typeTag: Record<TransactionType, { label: string; color: 'green' | 'red' | 'purple' | 'cyan' }> = {
-  DEPOSIT: { label: 'Deposit', color: 'green' },
-  WITHDRAWAL: { label: 'Withdrawal', color: 'red' },
-  TRANSFER_DEBIT: { label: 'Transfer out', color: 'purple' },
-  TRANSFER_CREDIT: { label: 'Transfer in', color: 'cyan' },
-};
 
 const headers = [
   { key: 'date', header: 'Date' },
@@ -145,12 +138,9 @@ export function DashboardPage() {
                         <TableRow key={key} {...rowProps}>
                           {row.cells.map((cell) => {
                             if (cell.info.header === 'type') {
-                              const tag = typeTag[cell.value as TransactionType];
                               return (
                                 <TableCell key={cell.id}>
-                                  <Tag type={tag.color} size="md">
-                                    {tag.label}
-                                  </Tag>
+                                  <TypeTag type={cell.value as TransactionType} />
                                 </TableCell>
                               );
                             }

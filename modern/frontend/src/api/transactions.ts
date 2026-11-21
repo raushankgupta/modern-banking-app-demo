@@ -44,3 +44,19 @@ export function transfer(
     body: { fromAccount, toAccount, amount, description: description || null },
   });
 }
+
+export interface HistoryEntry {
+  transactionId: number;
+  transactionType: TransactionType;
+  amount: number;
+  transactionDate: string;
+  referenceNumber: string;
+  description: string;
+}
+
+/** `type` omitted (or undefined) means all types. */
+export function getHistory(accountNumber: string, type?: TransactionType): Promise<HistoryEntry[]> {
+  return request<HistoryEntry[]>(`/accounts/${encodeURIComponent(accountNumber)}/transactions`, {
+    query: { type },
+  });
+}

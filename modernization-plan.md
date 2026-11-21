@@ -327,12 +327,12 @@ Goal: a clean Carbon-based React + TypeScript UI for all legacy workflows, with 
 
 ### F7 - Transaction history screen
 - **Acceptance criteria:**
-  - [ ] A table lists transactions newest first, with a type filter (All, DEPOSIT, WITHDRAWAL, TRANSFER_DEBIT, TRANSFER_CREDIT).
-  - [ ] The empty state and the not-found account error are handled.
-  - [ ] Amounts are formatted as currency and types are shown as Tags.
-  - [ ] A component test covers filtering with mocked data.
+  - [x] A table lists transactions newest first, with a type filter (All, DEPOSIT, WITHDRAWAL, TRANSFER_DEBIT, TRANSFER_CREDIT).
+  - [x] The empty state and the not-found account error are handled.
+  - [x] Amounts are formatted as currency and types are shown as Tags.
+  - [x] A component test covers filtering with mocked data.
 - **Relevant context:** [`TransactionHistoryFrame.java`](src/main/java/com/legacybank/TransactionHistoryFrame.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #24). Route `/history`; loads immediately when opened with `?account=`. The type Tag was extracted to `components/TypeTag.tsx` and is shared with the dashboard.
 
 ---
 
