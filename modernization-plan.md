@@ -207,12 +207,12 @@ Goal: a Spring Boot REST API that reproduces all legacy banking rules in a testa
   2. `GET /accounts/{accountNumber}` returns the account and its owner. Balances are `BigDecimal` with scale 2.
   3. Search by account number also returns the owning customer and accounts, as in the legacy search.
 - **Acceptance criteria:**
-  - [ ] A seeded customer and a seeded account number return the expected data and balances.
-  - [ ] An unknown ID or account number returns 404.
-  - [ ] An invalid account number format returns 400.
-  - [ ] FROZEN and CLOSED accounts are returned with their status.
+  - [x] A seeded customer and a seeded account number return the expected data and balances.
+  - [x] An unknown ID or account number returns 404.
+  - [x] An invalid account number format returns 400.
+  - [x] FROZEN and CLOSED accounts are returned with their status.
 - **Relevant context:** [`CustomerSearchFrame.java`](src/main/java/com/legacybank/CustomerSearchFrame.java), [`AccountDetailsFrame.java`](src/main/java/com/legacybank/AccountDetailsFrame.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #12). Endpoints: `GET /api/v1/customers/{id}`, `GET /api/v1/customers/by-account/{accountNumber}`, `GET /api/v1/accounts/{accountNumber}`.
 
 ### B5 - Deposit API
 - **Todo:** `POST /accounts/{accountNumber}/deposits` with `amount` and an optional `description`. Balance update plus a `DEPOSIT` transaction row with a `DEP` reference, in one DB transaction.
