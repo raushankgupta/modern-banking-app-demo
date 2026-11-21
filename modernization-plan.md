@@ -164,12 +164,12 @@ Goal: a Spring Boot REST API that reproduces all legacy banking rules in a testa
   2. Configure the DB path through a property or env var (default `../database/data/modernbank.db`), and apply `foreign_keys=ON` and a 10 s busy timeout.
   3. Add CORS for the Vite dev origin, and a health endpoint.
 - **Acceptance criteria:**
-  - [ ] `mvn test` passes and `mvn spring-boot:run` starts on a configured port.
-  - [ ] The health endpoint returns UP when the DB is reachable.
-  - [ ] Foreign keys are enforced on connections (tested).
-  - [ ] Startup fails with a clear message if the DB path points to the legacy `legacybank.db`.
+  - [x] `mvn test` passes and `mvn spring-boot:run` starts on a configured port.
+  - [x] The health endpoint returns UP when the DB is reachable.
+  - [x] Foreign keys are enforced on connections (tested).
+  - [x] Startup fails with a clear message if the DB path points to the legacy `legacybank.db`.
 - **Relevant context:** [`DBConnection.java`](src/main/java/com/legacybank/DBConnection.java), [`db.properties`](src/main/resources/db.properties).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #9)
 
 ### B2 - Implement validation rules, reference numbers and error model
 - **Intent:** Port `BankUtil` rules into one shared, tested component.
