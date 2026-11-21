@@ -273,10 +273,10 @@ Goal: a clean Carbon-based React + TypeScript UI for all legacy workflows, with 
   1. Create `modern/frontend` (Vite, React, TypeScript, `@carbon/react`, `sass`, React Router, Vitest + Testing Library).
   2. Add a typed API client with the base URL from an env variable, a Dev proxy or CORS setup, an auth context that stores the token, and a protected-route wrapper.
 - **Acceptance criteria:**
-  - [ ] `npm run dev`, `npm run build` and `npm test` succeed.
-  - [ ] Visiting a protected route without a token redirects to `/login`.
-  - [ ] A 401 API response clears the token and redirects to `/login`.
-- **Status:** [ ] pending
+  - [x] `npm run dev`, `npm run build` and `npm test` succeed.
+  - [x] Visiting a protected route without a token redirects to `/login`.
+  - [x] A 401 API response clears the token and redirects to `/login`.
+- **Status:** [x] done (issue #18). Vite proxies `/api` to the backend in dev (`VITE_PROXY_TARGET`, default `http://localhost:8080`), so no CORS is needed. `VITE_API_BASE_URL` overrides the API base URL.
 
 ### F2 - Login page
 - **Acceptance criteria:**
