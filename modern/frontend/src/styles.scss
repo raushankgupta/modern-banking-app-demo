@@ -1,1 +1,35 @@
 @use '@carbon/react';
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme' as *;
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-06;
+  background: $background;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 24rem;
+  padding: $spacing-07;
+  background: $layer-01;
+  border-top: 4px solid $interactive;
+}
+
+.login-title {
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+.login-subtitle {
+  margin-top: $spacing-02;
+  color: $text-secondary;
+}
+
+.login-submit {
+  width: 100%;
+  max-inline-size: none;
+}

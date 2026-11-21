@@ -27,7 +27,7 @@ afterEach(() => vi.restoreAllMocks());
 describe('protected routes', () => {
   it('redirects to /login when there is no token', () => {
     renderAt('/');
-    expect(screen.getByRole('heading', { name: 'Sign in' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Sign in' })).toBeInTheDocument();
   });
 
   it('shows the protected page when a token is stored', () => {
@@ -70,7 +70,7 @@ describe('API client', () => {
       await expect(request('/dashboard/summary')).rejects.toMatchObject({ status: 401 });
     });
 
-    await waitFor(() => expect(screen.getByRole('heading', { name: 'Sign in' })).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Sign in' })).toBeInTheDocument());
     expect(window.localStorage.getItem(sessionStorageKey)).toBeNull();
   });
 });

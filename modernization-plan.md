@@ -280,12 +280,12 @@ Goal: a clean Carbon-based React + TypeScript UI for all legacy workflows, with 
 
 ### F2 - Login page
 - **Acceptance criteria:**
-  - [ ] The form shows labeled username and password fields (Carbon `TextInput`/`PasswordInput`) and a Sign in button.
-  - [ ] A valid login goes to the dashboard. A failed login shows an inline error.
-  - [ ] The button is disabled while submitting, and empty fields are not submitted.
-  - [ ] Component tests cover success and failure with a mocked API.
+  - [x] The form shows labeled username and password fields (Carbon `TextInput`/`PasswordInput`) and a Sign in button.
+  - [x] A valid login goes to the dashboard. A failed login shows an inline error.
+  - [x] The button is disabled while submitting, and empty fields are not submitted.
+  - [x] Component tests cover success and failure with a mocked API.
 - **Relevant context:** [`LoginFrame.java`](src/main/java/com/legacybank/LoginFrame.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #19). Route `/login`; a signed-in user is redirected away from it; after login it returns to the originally requested page.
 
 ### F3 - App shell and modern dashboard (UI enhancement)
 - **Intent:** The demo-facing screen.
