@@ -17,6 +17,17 @@ if (!window.matchMedia) {
     }) as MediaQueryList;
 }
 
+// jsdom has no ResizeObserver; Carbon's TextArea uses it.
+if (!('ResizeObserver' in window)) {
+  class ResizeObserverStub {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+  (window as unknown as { ResizeObserver: typeof ResizeObserverStub }).ResizeObserver = ResizeObserverStub;
+  (globalThis as unknown as { ResizeObserver: typeof ResizeObserverStub }).ResizeObserver = ResizeObserverStub;
+}
+
 afterEach(() => {
   cleanup();
   window.localStorage.clear();

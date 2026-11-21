@@ -309,12 +309,12 @@ Goal: a clean Carbon-based React + TypeScript UI for all legacy workflows, with 
 
 ### F5 - Deposit and withdrawal screens
 - **Acceptance criteria:**
-  - [ ] Each form takes an account number, amount and optional description, with client-side checks for amount > 0, at most 2 decimals and at most 10,000,000.
-  - [ ] A success message shows the reference number and the new balance.
-  - [ ] Server errors (inactive account, insufficient funds) show clearly and the form stays editable.
-  - [ ] Component tests cover validation, success and server error.
+  - [x] Each form takes an account number, amount and optional description, with client-side checks for amount > 0, at most 2 decimals and at most 10,000,000.
+  - [x] A success message shows the reference number and the new balance.
+  - [x] Server errors (inactive account, insufficient funds) show clearly and the form stays editable.
+  - [x] Component tests cover validation, success and server error.
 - **Relevant context:** [`DepositFrame.java`](src/main/java/com/legacybank/DepositFrame.java), [`WithdrawalFrame.java`](src/main/java/com/legacybank/WithdrawalFrame.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #22). Routes `/deposit` and `/withdraw` share `AmountForm`; both prefill the account from `?account=`. Client checks live in `validation.ts` and mirror the backend `BankValidator`.
 
 ### F6 - Transfer screen
 - **Acceptance criteria:**

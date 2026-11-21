@@ -157,3 +157,12 @@ $sidenav-width: 16rem;
   gap: $spacing-04;
   margin-block-start: $spacing-05;
 }
+
+// ---- Deposit / withdrawal / transfer forms ---------------------------------------
+.amount-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-06;
+  max-width: 28rem;
+  margin-block-start: $spacing-05;
+}
