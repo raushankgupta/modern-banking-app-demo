@@ -192,13 +192,13 @@ Goal: a Spring Boot REST API that reproduces all legacy banking rules in a testa
   2. Protect all other `/api/v1/**` endpoints with a Spring Security JWT filter.
   3. Read the secret and expiry from configuration, not code.
 - **Acceptance criteria:**
-  - [ ] `admin` / `admin123` returns 200 and a token.
-  - [ ] A wrong password, an unknown user or an `INACTIVE` employee returns 401 with a generic message.
-  - [ ] Protected endpoints return 401 without a token and 200 with a valid one.
-  - [ ] An expired token is rejected.
-  - [ ] No plaintext password is logged or returned.
+  - [x] `admin` / `admin123` returns 200 and a token.
+  - [x] A wrong password, an unknown user or an `INACTIVE` employee returns 401 with a generic message.
+  - [x] Protected endpoints return 401 without a token and 200 with a valid one.
+  - [x] An expired token is rejected.
+  - [x] No plaintext password is logged or returned.
 - **Relevant context:** [`LoginFrame.java`](src/main/java/com/legacybank/LoginFrame.java), [`AppSession.java`](src/main/java/com/legacybank/AppSession.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #11). Approach: Spring Security OAuth2 Resource Server (Nimbus, HS256), 60 min tokens, secret from `BANK_JWT_SECRET` with a dev-only default.
 
 ### B4 - Customer and account lookup API
 - **Intent:** Back the CustomerSearch and AccountDetails screens.
