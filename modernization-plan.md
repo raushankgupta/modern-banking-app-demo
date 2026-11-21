@@ -179,11 +179,11 @@ Goal: a Spring Boot REST API that reproduces all legacy banking rules in a testa
   3. Reference generation through `REFERENCE_SEQUENCE`, with prefixes `DEP`/`WDR`/`TRF` in the legacy format.
   4. A uniform JSON error response (code, message, field) through `@ControllerAdvice`.
 - **Acceptance criteria:**
-  - [ ] Tests cover the legacy `BankUtilTest` cases: valid 100, 12.5 and 0.01; rejected 0, negative, non-numeric, 3 decimals, null, empty and amounts over the maximum.
-  - [ ] Reference numbers are unique, increasing and match the legacy format.
-  - [ ] Validation errors return HTTP 400 with the uniform error body.
+  - [x] Tests cover the legacy `BankUtilTest` cases: valid 100, 12.5 and 0.01; rejected 0, negative, non-numeric, 3 decimals, null, empty and amounts over the maximum.
+  - [x] Reference numbers are unique, increasing and match the legacy format.
+  - [x] Validation errors return HTTP 400 with the uniform error body.
 - **Relevant context:** [`BankUtil.java`](src/main/java/com/legacybank/BankUtil.java), [`BankUtilTest.java`](src/test/java/com/legacybank/BankUtilTest.java), [`DatabaseIntegrationTest.java`](src/test/java/com/legacybank/DatabaseIntegrationTest.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #10)
 
 ### B3 - Implement JWT authentication
 - **Intent:** Secure login replacing the plaintext legacy login.
