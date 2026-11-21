@@ -2,6 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from './auth/ProtectedRoute';
 import { AppShell } from './layout/AppShell';
 import { screens } from './layout/navItems';
+import { AccountDetailsPage } from './pages/AccountDetailsPage';
+import { CustomerSearchPage } from './pages/CustomerSearchPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { LoginPage } from './pages/LoginPage';
 import { PlaceholderPage } from './pages/PlaceholderPage';
@@ -13,9 +15,13 @@ export function App() {
       <Route element={<ProtectedRoute />}>
         <Route element={<AppShell />}>
           <Route path="/" element={<DashboardPage />} />
-          {screens.map((screen) => (
-            <Route key={screen.to} path={screen.to} element={<PlaceholderPage title={screen.label} />} />
-          ))}
+          <Route path="/search" element={<CustomerSearchPage />} />
+          <Route path="/accounts/:accountNumber" element={<AccountDetailsPage />} />
+          {screens
+            .filter((screen) => screen.to !== '/search')
+            .map((screen) => (
+              <Route key={screen.to} path={screen.to} element={<PlaceholderPage title={screen.label} />} />
+            ))}
         </Route>
       </Route>
     </Routes>

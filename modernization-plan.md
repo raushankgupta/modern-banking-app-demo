@@ -301,11 +301,11 @@ Goal: a clean Carbon-based React + TypeScript UI for all legacy workflows, with 
 
 ### F4 - Customer search and account details screens
 - **Acceptance criteria:**
-  - [ ] The user can search by customer ID or account number, and results show customer info and an accounts table.
-  - [ ] An account detail view shows type, status Tag, balance and owner, with buttons to Deposit, Withdraw and History for that account.
-  - [ ] Not-found and invalid-input errors show friendly messages.
+  - [x] The user can search by customer ID or account number, and results show customer info and an accounts table.
+  - [x] An account detail view shows type, status Tag, balance and owner, with buttons to Deposit, Withdraw and History for that account.
+  - [x] Not-found and invalid-input errors show friendly messages.
 - **Relevant context:** [`CustomerSearchFrame.java`](src/main/java/com/legacybank/CustomerSearchFrame.java), [`AccountDetailsFrame.java`](src/main/java/com/legacybank/AccountDetailsFrame.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #21). Routes `/search` and `/accounts/:accountNumber`. Account action buttons open `/deposit`, `/withdraw` and `/history` with `?account=<number>` (F5-F7 read it to prefill).
 
 ### F5 - Deposit and withdrawal screens
 - **Acceptance criteria:**

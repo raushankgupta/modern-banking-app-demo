@@ -41,3 +41,27 @@ export const summaryFixture: DashboardSummary = {
 export function jsonResponse(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), { status });
 }
+
+export const customerFixture = {
+  customerId: 3,
+  customerName: 'Priya Sharma',
+  email: 'priya@example.com',
+  phone: '555-0103',
+  address: '12 Park Street',
+  accounts: [
+    { accountNumber: '1001000006', accountType: 'SAVINGS', status: 'ACTIVE', balance: 15000.5 },
+    { accountNumber: '1001000008', accountType: 'FIXED_DEPOSIT', status: 'FROZEN', balance: 2000 },
+  ],
+};
+
+export const accountFixture = {
+  accountNumber: '1001000006',
+  accountType: 'SAVINGS',
+  status: 'ACTIVE',
+  balance: 15000.5,
+  opened: '2024-03-15',
+  customerId: 3,
+  customerName: 'Priya Sharma',
+  email: 'priya@example.com',
+  phone: '555-0103',
+};
