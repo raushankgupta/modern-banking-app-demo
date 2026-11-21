@@ -294,10 +294,10 @@ Goal: a clean Carbon-based React + TypeScript UI for all legacy workflows, with 
   - [x] The dashboard shows data from `/dashboard/summary`. Skeletons show while loading and an inline error shows on failure.
   - [x] Quick actions and nav items navigate to the Deposit, Withdraw, Transfer, Search and History screens.
   - [x] Logout clears the token and returns to login.
-  - [ ] The layout is usable at desktop and tablet widths, and interactive elements are keyboard-reachable.
+  - [x] The layout is usable at desktop and tablet widths, and interactive elements are keyboard-reachable.
   - [x] A component test covers rendering with mocked summary data.
 - **Relevant context:** [`MainFrame.java`](src/main/java/com/legacybank/MainFrame.java).
-- **Status:** [-] code complete (issue #20). Layout criterion awaiting visual review of the desktop and tablet screenshots. Routes `/search`, `/deposit`, `/withdraw`, `/transfer`, `/history` are placeholders until F4-F7.
+- **Status:** [x] done (issue #20). Layout reviewed on desktop and tablet screenshots. Routes `/search`, `/deposit`, `/withdraw`, `/transfer`, `/history` are placeholders until F4-F7.
 
 ### F4 - Customer search and account details screens
 - **Acceptance criteria:**
