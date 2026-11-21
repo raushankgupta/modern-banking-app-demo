@@ -108,7 +108,7 @@ repository. Without it the `legacybank.db` hash check is reported as SKIP. The s
 - Reference numbers are `DEP` / `WDR` / `TRF` plus 10 digits from `REFERENCE_SEQUENCE`.
 - History is newest first, with an optional type filter.
 
-## Docker
+## Running without Docker
 
-Not available yet: the backend and frontend Dockerfiles and Docker Compose are tracked in issues #25, #26 and #27.
-This section is completed when they are done.
+This project is run directly with `mvn spring-boot:run` and `npm run dev` (see **Run locally** above). Docker images
+and Docker Compose are intentionally not part of this modernization.

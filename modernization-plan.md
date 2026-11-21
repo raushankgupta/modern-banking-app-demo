@@ -19,7 +19,7 @@
 | Data access | Spring JDBC (`JdbcClient`) with `BigDecimal` |
 | Authentication | JWT + BCrypt. Hashing applies to the modern DB only. Demo login stays `admin` / `admin123`. |
 | UI library | Carbon Design System (`@carbon/react`) |
-| Epics | Four Epics: Backend, Frontend, Database, DevOps |
+| Epics | Four Epics: Backend, Frontend, Database, DevOps (DevOps Docker Stories dropped, see below) |
 | GitHub linking | Epic = Issue with label `epic` and the exact component title. Each Story is a sub-issue of its own component Epic only, with a task-list fallback. |
 
 Items I propose without asking. Say so if you disagree:
@@ -58,7 +58,6 @@ modern/
   backend/            Spring Boot 3, Java 21, Spring Security (JWT), Spring JDBC, sqlite-jdbc
   frontend/           React + TypeScript (Vite), @carbon/react, React Router
   database/           schema.sql, seed.sql (copies of legacy plus BCrypt hash), init script, integrity checks
-  docker-compose.yml  backend + frontend, SQLite file on a named volume
   README.md
 ```
 
@@ -85,7 +84,7 @@ REST surface (proposed):
 5. Frontend foundation: F1, F2, F3 (dashboard). F3 needs B9.
 6. Frontend features: F4, F5, F6, F7.
 7. DevOps: O1, O2, O3, O4.
-8. Database D3 and final validation (Stage 3): legacy-unchanged check, full test run, Docker run, PR to `main`.
+8. Database D3 and final validation (Stage 3): legacy-unchanged check, full test run, local run with `mvn spring-boot:run` and `npm run dev`, PR to `main`.
 
 Each Story is implemented, tested, committed, pushed and commented on its Issue before the next one starts.
 
@@ -337,43 +336,45 @@ Goal: a clean Carbon-based React + TypeScript UI for all legacy workflows, with 
 ---
 
 ## Epic: DevOps
-Goal: run and verify the whole app through Docker Compose, with documented local instructions.
+Goal: documented local run instructions and a clean repository.
 
-### O1 - Backend Dockerfile
+> **Scope change:** the Docker Stories O1-O3 were dropped at the user's request. The app is run locally with `mvn spring-boot:run` and `npm run dev` instead.
+
+### O1 - Backend Dockerfile (dropped)
 - **Acceptance criteria:**
   - [ ] A multi-stage build produces a Java 21 runtime image, and the container starts.
   - [ ] The DB path is configurable through an env variable and mapped to a mounted volume.
   - [ ] The image contains no `*.db` file and no secrets.
-- **Status:** [ ] pending
+- **Status:** [~] dropped (issue #25, closed as not planned). Docker is not used; run with `mvn spring-boot:run` and `npm run dev`.
 
-### O2 - Frontend Dockerfile
+### O2 - Frontend Dockerfile (dropped)
 - **Acceptance criteria:**
   - [ ] A multi-stage build serves the production build through nginx.
   - [ ] `/api` is proxied to the backend service, or the API base URL is configurable.
   - [ ] The container serves the app on a documented port.
-- **Status:** [ ] pending
+- **Status:** [~] dropped (issue #26, closed as not planned). Docker is not used; run with `mvn spring-boot:run` and `npm run dev`.
 
-### O3 - Docker Compose setup
+### O3 - Docker Compose setup (dropped)
 - **Acceptance criteria:**
   - [ ] `docker compose up --build` starts the frontend and backend.
   - [ ] The SQLite DB lives on a named volume and is created from `schema.sql` and `seed.sql` when missing (via the D2 script or an init step).
   - [ ] Login with the demo credentials works through the frontend on the Compose stack.
   - [ ] Data survives `docker compose restart`. The Compose file never mounts the legacy `legacybank.db`.
-- **Status:** [ ] pending
+- **Status:** [~] dropped (issue #27, closed as not planned). Docker is not used; run with `mvn spring-boot:run` and `npm run dev`.
 
 ### O4 - README and repository hygiene
 - **Acceptance criteria:**
-  - [x] `modern/README.md` documents prerequisites, local run (backend, frontend), Docker run, tests and the demo credentials.
+  - [x] `modern/README.md` documents prerequisites, local run (backend, frontend), tests and the demo credentials.
   - [x] `.gitignore` excludes `target/`, `node_modules/`, `*.db`, `dist/` and `.env`.
   - [x] `git status` shows no build output or database files staged.
-- **Status:** [x] done (issue #28). `modern/.gitignore` was created via a shell command with the user's explicit one-file authorization, because the editor tools were blocked by an ignore rule. The README's Docker section is completed after O1-O3.
+- **Status:** [x] done (issue #28). `modern/.gitignore` was created via a shell command with the user's explicit one-file authorization, because the editor tools were blocked by an ignore rule. The README has no Docker section because O1-O3 were dropped.
 
 ---
 
 ## Final Validation (Stage 3, after all Stories)
 - Run `mvn test` in the backend and `npm test` in the frontend, then run the D3 check.
 - Walk through the demo checklist: dashboard, login, customer lookup, deposit, withdrawal, transfer, history.
-- Run `docker compose up --build` and repeat a smoke test.
+- Smoke-test the running stack started with `mvn spring-boot:run` and `npm run dev`: login, then the demo checklist above, against a fresh `init.sh` database.
 - Open a PR from `feature/modern-banking-app` to `main` in `origin`. Do not merge without asking.
 
 ## Implementation guidance (Agent mode)
