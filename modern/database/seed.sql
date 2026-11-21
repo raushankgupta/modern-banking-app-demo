@@ -1,0 +1,89 @@
+-- ============================================================================
+-- Legacy Banking App - SQLite seed data
+-- Applied automatically after sqlite-schema.sql on first start. Contains:
+-- 1 employee, 10 customers, 15 accounts and sample transactions.
+--
+-- DEMO LOGIN:  username = admin   password = admin123
+-- Modern copy of database/seed-data.sql. The only change is that the admin
+-- password is the placeholder __ADMIN_PASSWORD_BCRYPT__. The init script (D2)
+-- replaces it with a BCrypt hash (60 chars, fits PASSWORD VARCHAR(100))
+-- generated at DB creation time, so no hash is committed to git.
+-- Everything else is identical to the legacy seed.
+-- ============================================================================
+
+INSERT INTO EMPLOYEES (EMPLOYEE_ID, USERNAME, PASSWORD, EMPLOYEE_NAME, STATUS)
+VALUES (1, 'admin', '__ADMIN_PASSWORD_BCRYPT__', 'Branch Administrator', 'ACTIVE');
+
+-- Customers (IDs 1001 - 1010)
+INSERT INTO CUSTOMERS (CUSTOMER_ID, CUSTOMER_NAME, EMAIL, PHONE, ADDRESS, CREATED_DATE)
+VALUES (1001, 'John Anderson', 'john.anderson@example.com', '555-0101', '12 Maple Street, Springfield, IL 62701', datetime('now', 'localtime', '-900 days'));
+INSERT INTO CUSTOMERS (CUSTOMER_ID, CUSTOMER_NAME, EMAIL, PHONE, ADDRESS, CREATED_DATE)
+VALUES (1002, 'Maria Garcia', 'maria.garcia@example.com', '555-0102', '48 Oak Avenue, Madison, WI 53703', datetime('now', 'localtime', '-850 days'));
+INSERT INTO CUSTOMERS (CUSTOMER_ID, CUSTOMER_NAME, EMAIL, PHONE, ADDRESS, CREATED_DATE)
+VALUES (1003, 'Robert Chen', 'robert.chen@example.com', '555-0103', '305 Pine Road, Austin, TX 78701', datetime('now', 'localtime', '-800 days'));
+INSERT INTO CUSTOMERS (CUSTOMER_ID, CUSTOMER_NAME, EMAIL, PHONE, ADDRESS, CREATED_DATE)
+VALUES (1004, 'Emily Johnson', 'emily.johnson@example.com', '555-0104', '77 Cedar Lane, Denver, CO 80202', datetime('now', 'localtime', '-700 days'));
+INSERT INTO CUSTOMERS (CUSTOMER_ID, CUSTOMER_NAME, EMAIL, PHONE, ADDRESS, CREATED_DATE)
+VALUES (1005, 'Michael Brown', 'michael.brown@example.com', '555-0105', '910 Birch Boulevard, Columbus, OH 43215', datetime('now', 'localtime', '-650 days'));
+INSERT INTO CUSTOMERS (CUSTOMER_ID, CUSTOMER_NAME, EMAIL, PHONE, ADDRESS, CREATED_DATE)
+VALUES (1006, 'Sophia Patel', 'sophia.patel@example.com', '555-0106', '23 Willow Court, Edison, NJ 08817', datetime('now', 'localtime', '-600 days'));
+INSERT INTO CUSTOMERS (CUSTOMER_ID, CUSTOMER_NAME, EMAIL, PHONE, ADDRESS, CREATED_DATE)
+VALUES (1007, 'David Wilson', 'david.wilson@example.com', '555-0107', '61 Elm Street, Portland, OR 97201', datetime('now', 'localtime', '-500 days'));
+INSERT INTO CUSTOMERS (CUSTOMER_ID, CUSTOMER_NAME, EMAIL, PHONE, ADDRESS, CREATED_DATE)
+VALUES (1008, 'Olivia Martinez', 'olivia.martinez@example.com', '555-0108', '150 Harbor Drive, Tampa, FL 33602', datetime('now', 'localtime', '-400 days'));
+INSERT INTO CUSTOMERS (CUSTOMER_ID, CUSTOMER_NAME, EMAIL, PHONE, ADDRESS, CREATED_DATE)
+VALUES (1009, 'James Taylor', 'james.taylor@example.com', '555-0109', '8 Lakeview Terrace, Chicago, IL 60601', datetime('now', 'localtime', '-300 days'));
+INSERT INTO CUSTOMERS (CUSTOMER_ID, CUSTOMER_NAME, EMAIL, PHONE, ADDRESS, CREATED_DATE)
+VALUES (1010, 'Linda Thompson', 'linda.thompson@example.com', '555-0110', '402 Summit Way, Seattle, WA 98101', datetime('now', 'localtime', '-200 days'));
+
+-- Accounts (15): numbers 1001000001 - 1001000015
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5001, '1001000001', 1001, 'SAVINGS', 15250.75, 'ACTIVE', datetime('now', 'localtime', '-890 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5002, '1001000002', 1001, 'CHECKING', 3200.00, 'ACTIVE', datetime('now', 'localtime', '-880 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5003, '1001000003', 1002, 'SAVINGS', 48900.50, 'ACTIVE', datetime('now', 'localtime', '-840 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5004, '1001000004', 1003, 'CHECKING', 7525.25, 'ACTIVE', datetime('now', 'localtime', '-790 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5005, '1001000005', 1003, 'FIXED_DEPOSIT', 100000.00, 'ACTIVE', datetime('now', 'localtime', '-780 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5006, '1001000006', 1004, 'SAVINGS', 22310.40, 'ACTIVE', datetime('now', 'localtime', '-690 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5007, '1001000007', 1005, 'CHECKING', 1850.90, 'ACTIVE', datetime('now', 'localtime', '-640 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5008, '1001000008', 1005, 'SAVINGS', 9400.00, 'FROZEN', datetime('now', 'localtime', '-630 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5009, '1001000009', 1006, 'SAVINGS', 31775.00, 'ACTIVE', datetime('now', 'localtime', '-590 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5010, '1001000010', 1007, 'CHECKING', 560.35, 'ACTIVE', datetime('now', 'localtime', '-490 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5011, '1001000011', 1008, 'SAVINGS', 18640.20, 'ACTIVE', datetime('now', 'localtime', '-390 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5012, '1001000012', 1008, 'CHECKING', 4310.00, 'ACTIVE', datetime('now', 'localtime', '-380 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5013, '1001000013', 1009, 'CHECKING', 0.00, 'CLOSED', datetime('now', 'localtime', '-290 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5014, '1001000014', 1009, 'SAVINGS', 12080.65, 'ACTIVE', datetime('now', 'localtime', '-285 days'));
+INSERT INTO ACCOUNTS (ACCOUNT_ID, ACCOUNT_NUMBER, CUSTOMER_ID, ACCOUNT_TYPE, BALANCE, STATUS, CREATED_DATE)
+VALUES (5015, '1001000015', 1010, 'SAVINGS', 27500.00, 'ACTIVE', datetime('now', 'localtime', '-190 days'));
+
+-- Sample transaction history (informational; account balances above are the starting balances).
+-- The two legs of a transfer share one reference number.
+INSERT INTO TRANSACTIONS (TRANSACTION_ID, ACCOUNT_NUMBER, TRANSACTION_TYPE, AMOUNT, DESCRIPTION, TRANSACTION_DATE, REFERENCE_NUMBER)
+VALUES (90001, '1001000001', 'DEPOSIT', 5000.00, 'Opening cash deposit', datetime('now', 'localtime', '-60 days'), 'DEP0000000001');
+INSERT INTO TRANSACTIONS (TRANSACTION_ID, ACCOUNT_NUMBER, TRANSACTION_TYPE, AMOUNT, DESCRIPTION, TRANSACTION_DATE, REFERENCE_NUMBER)
+VALUES (90002, '1001000001', 'WITHDRAWAL', 750.00, 'ATM-style cash withdrawal', datetime('now', 'localtime', '-45 days'), 'WDR0000000002');
+INSERT INTO TRANSACTIONS (TRANSACTION_ID, ACCOUNT_NUMBER, TRANSACTION_TYPE, AMOUNT, DESCRIPTION, TRANSACTION_DATE, REFERENCE_NUMBER)
+VALUES (90003, '1001000003', 'DEPOSIT', 12000.00, 'Salary deposit', datetime('now', 'localtime', '-30 days'), 'DEP0000000003');
+INSERT INTO TRANSACTIONS (TRANSACTION_ID, ACCOUNT_NUMBER, TRANSACTION_TYPE, AMOUNT, DESCRIPTION, TRANSACTION_DATE, REFERENCE_NUMBER)
+VALUES (90004, '1001000004', 'WITHDRAWAL', 400.00, 'Cash withdrawal', datetime('now', 'localtime', '-20 days'), 'WDR0000000004');
+INSERT INTO TRANSACTIONS (TRANSACTION_ID, ACCOUNT_NUMBER, TRANSACTION_TYPE, AMOUNT, DESCRIPTION, TRANSACTION_DATE, REFERENCE_NUMBER)
+VALUES (90005, '1001000009', 'DEPOSIT', 2500.00, 'Cash deposit', datetime('now', 'localtime', '-12 days'), 'DEP0000000005');
+INSERT INTO TRANSACTIONS (TRANSACTION_ID, ACCOUNT_NUMBER, TRANSACTION_TYPE, AMOUNT, DESCRIPTION, TRANSACTION_DATE, REFERENCE_NUMBER)
+VALUES (90006, '1001000006', 'TRANSFER_DEBIT', 1000.00, 'Transfer to 1001000011', datetime('now', 'localtime', '-5 days'), 'TRF0000000006');
+INSERT INTO TRANSACTIONS (TRANSACTION_ID, ACCOUNT_NUMBER, TRANSACTION_TYPE, AMOUNT, DESCRIPTION, TRANSACTION_DATE, REFERENCE_NUMBER)
+VALUES (90007, '1001000011', 'TRANSFER_CREDIT', 1000.00, 'Transfer from 1001000006', datetime('now', 'localtime', '-5 days'), 'TRF0000000006');
+
+-- Reference numbers generated by the application continue after the seeded ones.
+INSERT INTO REFERENCE_SEQUENCE (REF_ID) VALUES (6);
