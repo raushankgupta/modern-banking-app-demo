@@ -147,10 +147,10 @@ Goal: provide the modern SQLite database with the same schema and rules as legac
   2. The script also compares the legacy `legacybank.db` hash against a baseline hash recorded before work starts, outside the repo.
   3. Add SQL checks on the modern DB: `CHECK` constraints, FKs and unique constraints reject bad data.
 - **Acceptance criteria:**
-  - [ ] The script passes on an untouched legacy tree and fails after a simulated edit.
-  - [ ] Negative balance, an invalid status or type, a duplicate account number and an orphan transaction are each rejected by the modern DB.
-  - [ ] The script output is usable in the final validation summary.
-- **Status:** [ ] pending
+  - [x] The script passes on an untouched legacy tree and fails after a simulated edit.
+  - [x] Negative balance, an invalid status or type, a duplicate account number and an orphan transaction are each rejected by the modern DB.
+  - [x] The script output is usable in the final validation summary.
+- **Status:** [x] done (issue #8). Run `modern/database/verify.sh`; set `LEGACY_DB_BASELINE=<file>` (a `shasum -a 256` baseline recorded before work, outside the repo) to also check the `legacybank.db` hash. Exit code 0 means nothing failed.
 
 ---
 
