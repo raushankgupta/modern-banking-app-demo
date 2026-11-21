@@ -247,12 +247,12 @@ Goal: a Spring Boot REST API that reproduces all legacy banking rules in a testa
 ### B8 - Transaction history API
 - **Todo:** `GET /accounts/{accountNumber}/transactions?type=` returns rows newest first, with an optional type filter.
 - **Acceptance criteria:**
-  - [ ] Results are ordered newest first (tested with seed data).
-  - [ ] `type` filters to one of the 4 valid types. An invalid type returns 400.
-  - [ ] An unknown account returns 404. An account with no history returns an empty list.
-  - [ ] Each row has type, amount, description, date and reference number.
+  - [x] Results are ordered newest first (tested with seed data).
+  - [x] `type` filters to one of the 4 valid types. An invalid type returns 400.
+  - [x] An unknown account returns 404. An account with no history returns an empty list.
+  - [x] Each row has type, amount, description, date and reference number.
 - **Relevant context:** [`TransactionHistoryFrame.java`](src/main/java/com/legacybank/TransactionHistoryFrame.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #16). Endpoint: `GET /api/v1/accounts/{accountNumber}/transactions?type=`.
 
 ### B9 - Dashboard summary API
 - **Intent:** Feed the new dashboard (a new capability, not in legacy).
