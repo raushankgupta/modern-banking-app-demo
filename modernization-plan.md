@@ -217,12 +217,12 @@ Goal: a Spring Boot REST API that reproduces all legacy banking rules in a testa
 ### B5 - Deposit API
 - **Todo:** `POST /accounts/{accountNumber}/deposits` with `amount` and an optional `description`. Balance update plus a `DEPOSIT` transaction row with a `DEP` reference, in one DB transaction.
 - **Acceptance criteria:**
-  - [ ] A valid deposit increases the balance and records one `DEPOSIT` transaction. The response contains the reference number and the new balance.
-  - [ ] A non-ACTIVE account returns 409 and nothing changes.
-  - [ ] An invalid amount returns 400. An unknown account returns 404.
-  - [ ] If the transaction insert fails, the balance is rolled back (tested).
+  - [x] A valid deposit increases the balance and records one `DEPOSIT` transaction. The response contains the reference number and the new balance.
+  - [x] A non-ACTIVE account returns 409 and nothing changes.
+  - [x] An invalid amount returns 400. An unknown account returns 404.
+  - [x] If the transaction insert fails, the balance is rolled back (tested).
 - **Relevant context:** [`DepositFrame.java`](src/main/java/com/legacybank/DepositFrame.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #13). Approach (user-approved): mirror legacy read-check-write inside one BEGIN IMMEDIATE transaction. Shared building blocks for B6/B7: `LedgerRepository`, `AccountRules`, `BusinessRuleException` (409), `TransactionReceipt`, `AmountRequest`, `TestDatabase`.
 
 ### B6 - Withdrawal API
 - **Todo:** `POST /accounts/{accountNumber}/withdrawals`, with the same pattern, a `WDR` reference and a funds check.
