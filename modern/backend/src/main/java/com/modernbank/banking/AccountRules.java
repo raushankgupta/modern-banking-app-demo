@@ -1,5 +1,8 @@
 package com.modernbank.banking;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 import com.modernbank.error.BusinessRuleException;
 
 /** Rules shared by deposit, withdrawal and transfer; messages are the legacy ones. */
@@ -15,6 +18,14 @@ final class AccountRules {
         }
     }
 
+    /** No overdraft: the balance must be at least the amount. Withdrawing exactly the balance is allowed. */
+    static void requireSufficientFunds(AccountState account, BigDecimal amount) {
+        if (account.balance().compareTo(amount) < 0) {
+            throw new BusinessRuleException(BusinessRuleException.INSUFFICIENT_FUNDS,
+                    "Insufficient funds. Available balance is " + formatMoney(account.balance()) + ".");
+        }
+    }
+
     /** Uses the default text when blank and always appends who performed the operation, like legacy. */
     static String describe(String input, String defaultText, String username) {
         String text = input == null ? "" : input.trim();
@@ -22,5 +33,9 @@ final class AccountRules {
             text = defaultText;
         }
         return text + " (by " + username + ")";
+    }
+
+    static String formatMoney(BigDecimal value) {
+        return new DecimalFormat("#,##0.00").format(value);
     }
 }

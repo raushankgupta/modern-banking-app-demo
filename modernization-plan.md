@@ -227,12 +227,12 @@ Goal: a Spring Boot REST API that reproduces all legacy banking rules in a testa
 ### B6 - Withdrawal API
 - **Todo:** `POST /accounts/{accountNumber}/withdrawals`, with the same pattern, a `WDR` reference and a funds check.
 - **Acceptance criteria:**
-  - [ ] A valid withdrawal decreases the balance and records one `WITHDRAWAL` transaction.
-  - [ ] An amount greater than the balance returns 409, and the balance and history are unchanged.
-  - [ ] Withdrawing exactly the balance succeeds and leaves 0.00.
-  - [ ] A non-ACTIVE account returns 409. An invalid amount returns 400. An unknown account returns 404.
+  - [x] A valid withdrawal decreases the balance and records one `WITHDRAWAL` transaction.
+  - [x] An amount greater than the balance returns 409, and the balance and history are unchanged.
+  - [x] Withdrawing exactly the balance succeeds and leaves 0.00.
+  - [x] A non-ACTIVE account returns 409. An invalid amount returns 400. An unknown account returns 404.
 - **Relevant context:** [`WithdrawalFrame.java`](src/main/java/com/legacybank/WithdrawalFrame.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #14). Reuses B5 building blocks; added `AccountRules.requireSufficientFunds` for B7.
 
 ### B7 - Transfer API
 - **Todo:** `POST /transfers` with `fromAccount`, `toAccount`, `amount` and an optional `description`. It runs one DB transaction with a `TRF` reference shared by the `TRANSFER_DEBIT` and `TRANSFER_CREDIT` rows.
