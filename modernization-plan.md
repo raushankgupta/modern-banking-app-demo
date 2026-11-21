@@ -258,10 +258,10 @@ Goal: a Spring Boot REST API that reproduces all legacy banking rules in a testa
 - **Intent:** Feed the new dashboard (a new capability, not in legacy).
 - **Todo:** `GET /dashboard/summary` returns customer count, account count, total balance of ACTIVE accounts, and the 5-10 most recent transactions across all accounts.
 - **Acceptance criteria:**
-  - [ ] With seed data, the counts are 10 customers and 15 accounts, and the balance total matches a direct SQL sum of ACTIVE accounts.
-  - [ ] Recent transactions are newest first and limited in number.
-  - [ ] The endpoint requires authentication.
-- **Status:** [ ] pending
+  - [x] With seed data, the counts are 10 customers and 15 accounts, and the balance total matches a direct SQL sum of ACTIVE accounts.
+  - [x] Recent transactions are newest first and limited in number.
+  - [x] The endpoint requires authentication.
+- **Status:** [x] done (issue #17). Endpoint: `GET /api/v1/dashboard/summary` (recent transactions limited to 10, each with account number and customer name).
 
 ---
 
