@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { App } from '../App';
 import { request, sessionStorageKey } from '../api/client';
+import { jsonResponse, summaryFixture } from '../test/fixtures';
 import { AuthProvider } from './AuthContext';
 
 function renderAt(path: string) {
@@ -30,10 +31,11 @@ describe('protected routes', () => {
     expect(screen.getByRole('button', { name: 'Sign in' })).toBeInTheDocument();
   });
 
-  it('shows the protected page when a token is stored', () => {
+  it('shows the protected page when a token is stored', async () => {
     storeSession();
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(jsonResponse(summaryFixture));
     renderAt('/');
-    expect(screen.getByText(/Signed in as Branch Administrator/)).toBeInTheDocument();
+    expect(await screen.findByText(/Welcome back, Branch Administrator/)).toBeInTheDocument();
   });
 });
 
@@ -60,12 +62,11 @@ describe('API client', () => {
 
   it('a 401 response clears the token and redirects to /login', async () => {
     storeSession();
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue(jsonResponse(summaryFixture));
     renderAt('/');
-    expect(screen.getByText(/Signed in as/)).toBeInTheDocument();
+    expect(await screen.findByText(/Welcome back/)).toBeInTheDocument();
 
-    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
-      new Response(JSON.stringify({ code: 'UNAUTHORIZED', message: 'expired' }), { status: 401 }),
-    );
+    fetchMock.mockResolvedValue(jsonResponse({ code: 'UNAUTHORIZED', message: 'expired' }, 401));
     await act(async () => {
       await expect(request('/dashboard/summary')).rejects.toMatchObject({ status: 401 });
     });

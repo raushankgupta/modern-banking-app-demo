@@ -291,13 +291,13 @@ Goal: a clean Carbon-based React + TypeScript UI for all legacy workflows, with 
 - **Intent:** The demo-facing screen.
 - **Todo:** Carbon `Header` with the user name and a Logout action, a `SideNav` for the main screens, KPI `Tile`s (customers, accounts, total balance), a Quick Actions panel, and a Recent Transactions `DataTable` with colored `Tag`s per type. Loading and error states use Carbon skeleton and notification components. Money is formatted as currency.
 - **Acceptance criteria:**
-  - [ ] The dashboard shows data from `/dashboard/summary`. Skeletons show while loading and an inline error shows on failure.
-  - [ ] Quick actions and nav items navigate to the Deposit, Withdraw, Transfer, Search and History screens.
-  - [ ] Logout clears the token and returns to login.
+  - [x] The dashboard shows data from `/dashboard/summary`. Skeletons show while loading and an inline error shows on failure.
+  - [x] Quick actions and nav items navigate to the Deposit, Withdraw, Transfer, Search and History screens.
+  - [x] Logout clears the token and returns to login.
   - [ ] The layout is usable at desktop and tablet widths, and interactive elements are keyboard-reachable.
-  - [ ] A component test covers rendering with mocked summary data.
+  - [x] A component test covers rendering with mocked summary data.
 - **Relevant context:** [`MainFrame.java`](src/main/java/com/legacybank/MainFrame.java).
-- **Status:** [ ] pending
+- **Status:** [-] code complete (issue #20). Layout criterion awaiting visual review of the desktop and tablet screenshots. Routes `/search`, `/deposit`, `/withdraw`, `/transfer`, `/history` are placeholders until F4-F7.
 
 ### F4 - Customer search and account details screens
 - **Acceptance criteria:**

@@ -33,3 +33,94 @@
   width: 100%;
   max-inline-size: none;
 }
+
+// ---- App shell and dashboard -------------------------------------------------
+$sidenav-width: 16rem;
+
+.app-user {
+  color: $text-on-color;
+  padding-inline: $spacing-04;
+  font-size: 0.875rem;
+}
+
+.app-content {
+  padding: $spacing-07 $spacing-06;
+  min-height: calc(100vh - 3rem);
+  background: $background;
+
+  // The persistent side nav is visible from the large breakpoint (66rem) up.
+  @media (min-width: 66rem) {
+    margin-inline-start: $sidenav-width;
+  }
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.page-subtitle {
+  margin-block: $spacing-02 $spacing-06;
+  color: $text-secondary;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-block-end: $spacing-04;
+}
+
+.dashboard-section {
+  margin-block-start: $spacing-07;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: $spacing-05;
+  margin-block-start: $spacing-05;
+}
+
+.kpi-tile {
+  min-height: 7.5rem;
+  border-top: 3px solid $border-strong-01;
+}
+
+.kpi-tile--highlight {
+  border-top-color: $interactive;
+}
+
+.kpi-label {
+  color: $text-secondary;
+  font-size: 0.875rem;
+  margin-block-end: $spacing-03;
+}
+
+.kpi-value {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: $spacing-05;
+}
+
+.quick-action {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-02;
+  min-height: 5.5rem;
+}
+
+.quick-action-desc {
+  color: $text-secondary;
+  font-size: 0.875rem;
+}
+
+.cell-right {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}

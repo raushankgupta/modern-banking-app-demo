@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { App } from '../App';
 import { sessionStorageKey } from '../api/client';
 import { AuthProvider } from '../auth/AuthContext';
+import { jsonResponse, summaryFixture } from '../test/fixtures';
 
 function renderLogin() {
   return render(
@@ -45,14 +46,15 @@ describe('LoginPage', () => {
   it('signs in with valid credentials and goes to the dashboard', async () => {
     const fetchMock = vi
       .spyOn(globalThis, 'fetch')
-      .mockResolvedValue(new Response(JSON.stringify(okResponse), { status: 200 }));
+      .mockResolvedValueOnce(jsonResponse(okResponse))
+      .mockResolvedValue(jsonResponse(summaryFixture));
     renderLogin();
 
     await userEvent.type(screen.getByLabelText('Username'), 'admin');
     await userEvent.type(screen.getByLabelText('Password'), 'admin123');
     await userEvent.click(screen.getByRole('button', { name: 'Sign in' }));
 
-    expect(await screen.findByText(/Signed in as Branch Administrator/)).toBeInTheDocument();
+    expect(await screen.findByText(/Welcome back, Branch Administrator/)).toBeInTheDocument();
     expect(fetchMock).toHaveBeenCalledWith(
       '/api/v1/auth/login',
       expect.objectContaining({ method: 'POST', body: JSON.stringify({ username: 'admin', password: 'admin123' }) }),
@@ -90,7 +92,8 @@ describe('LoginPage', () => {
     expect(screen.queryByRole('button', { name: 'Sign in' })).not.toBeInTheDocument();
     expect(fetchMock).toHaveBeenCalledTimes(1);
 
-    resolve(new Response(JSON.stringify(okResponse), { status: 200 }));
-    await waitFor(() => expect(screen.getByText(/Signed in as/)).toBeInTheDocument());
+    fetchMock.mockResolvedValue(jsonResponse(summaryFixture));
+    resolve(jsonResponse(okResponse));
+    await waitFor(() => expect(screen.getByText(/Welcome back/)).toBeInTheDocument());
   });
 });
