@@ -8,6 +8,7 @@ import { DashboardPage } from './pages/DashboardPage';
 import { DepositPage } from './pages/DepositPage';
 import { LoginPage } from './pages/LoginPage';
 import { PlaceholderPage } from './pages/PlaceholderPage';
+import { TransferPage } from './pages/TransferPage';
 import { WithdrawalPage } from './pages/WithdrawalPage';
 
 export function App() {
@@ -21,8 +22,9 @@ export function App() {
           <Route path="/accounts/:accountNumber" element={<AccountDetailsPage />} />
           <Route path="/deposit" element={<DepositPage />} />
           <Route path="/withdraw" element={<WithdrawalPage />} />
+          <Route path="/transfer" element={<TransferPage />} />
           {screens
-            .filter((screen) => !['/search', '/deposit', '/withdraw'].includes(screen.to))
+            .filter((screen) => !['/search', '/deposit', '/withdraw', '/transfer'].includes(screen.to))
             .map((screen) => (
               <Route key={screen.to} path={screen.to} element={<PlaceholderPage title={screen.label} />} />
             ))}

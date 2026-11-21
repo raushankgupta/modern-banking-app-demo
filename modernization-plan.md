@@ -318,12 +318,12 @@ Goal: a clean Carbon-based React + TypeScript UI for all legacy workflows, with 
 
 ### F6 - Transfer screen
 - **Acceptance criteria:**
-  - [ ] The form takes source account, destination account, amount and optional description. It blocks identical accounts client-side.
-  - [ ] A success message shows the shared reference number.
-  - [ ] Server errors are displayed, and double submission is prevented.
-  - [ ] Component tests cover validation, success and server error.
+  - [x] The form takes source account, destination account, amount and optional description. It blocks identical accounts client-side.
+  - [x] A success message shows the shared reference number.
+  - [x] Server errors are displayed, and double submission is prevented.
+  - [x] Component tests cover validation, success and server error.
 - **Relevant context:** [`TransferFrame.java`](src/main/java/com/legacybank/TransferFrame.java).
-- **Status:** [ ] pending
+- **Status:** [x] done (issue #23). Route `/transfer`; the source account is prefilled from `?account=`.
 
 ### F7 - Transaction history screen
 - **Acceptance criteria:**

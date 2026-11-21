@@ -23,3 +23,24 @@ export function withdraw(accountNumber: string, amount: string, description: str
     body: { amount, description: description || null },
   });
 }
+
+export interface TransferReceipt {
+  fromAccount: string;
+  toAccount: string;
+  amount: number;
+  fromBalance: number;
+  toBalance: number;
+  reference: string;
+}
+
+export function transfer(
+  fromAccount: string,
+  toAccount: string,
+  amount: string,
+  description: string,
+): Promise<TransferReceipt> {
+  return request<TransferReceipt>('/transfers', {
+    method: 'POST',
+    body: { fromAccount, toAccount, amount, description: description || null },
+  });
+}
